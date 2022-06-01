@@ -1,0 +1,12 @@
+{
+    "name": "binary-search-tree",
+    "version": "1.0.0",
+    "description": "An implementation of a BST",
+    "main": "BST.js",
+    "type": "module",
+    "scripts": {
+      "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "author": "Ahmed Aly",
+    "license": "ISC"
+  }
