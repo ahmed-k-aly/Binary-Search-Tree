@@ -12,6 +12,11 @@ export default class BinaryTree{
     #root;
     #size;
 
+    constructor(){
+        this.#root = null
+        this.#size = 0;
+    }
+
     /**
      * Adds element to the tree if it is not already.
      * @param {*} _value value to add to tree
@@ -186,6 +191,7 @@ export default class BinaryTree{
         console.log("Value: " + node.value + " ");
         inOrderTraversalHelper(node.right);
     }
+
     get size(){
         return this.#size;
     }
