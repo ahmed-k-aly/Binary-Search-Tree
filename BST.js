@@ -56,11 +56,91 @@ export default class BinaryTree{
         let isRightChild = compareNodes(toRemove, parentNode);
         if (isRightChild) parentNode.right = newChild;
         else parentNode.left = newChild;
-        
+        this.#size--;
         return true;
 
     }
 
+    compareNodes(node1, node2) {
+        return node1.value > node2.value ? true : false;
+    }
+
+    deleteNode(nodeToDelete) {
+        //Case 1: Root node
+        if (nodeToDelete.parentNode == null){
+            if (nodeToDelete.left != null){
+                nodeToDelete.left.parent = null
+                return nodeToDelete.left;
+            }
+            nodeToDelete.right.parent = null
+            return nodeToDelete.right;
+        }
+        // Case 2: Leaf
+        if (nodeToDelete.left == null && nodeToDelete.right == null){
+            return null;
+        }
+        // Case 3: One child
+        if (nodeToDelete.left == null){
+            // child to replace is right child.
+            let newChild = nodeToDelete.right;
+            // set its parent to null.
+            newChild.parent = null;
+            // return it.
+            return newChild;
+        }
+        else if (nodeToDelete.right == null){
+            // child to replace is left child.
+            let newChild = nodeToDelete.left;
+            // set its parent to null.
+            newChild.parent = null;
+            // return it.
+            return newChild;
+        }
+        // Case 3: Two children
+        nodeToDelete.value = minValue(nodeToDelete.right);
+        nodeToDelete.right = findHelper(nodeToDelete.right, nodeToDelete.value);
+        return nodeToDelete;
+    }
+
+
+    /**
+     * gets the smallest value in the tree
+     * @returns the smallest value in the tree
+     */
+    minValue(){
+        return minValueHelper(this.#root).value;
+    }
+    /**
+     * gets the largest value in the tree
+     * @returns the largest value in the tree
+     */
+    maxValue(){
+        return maxValueHelper(this.#root).value;
+    }
+
+    /**
+     * @param {Node} node the root of the tree from the method's perspective. 
+     * @returns the smallest node in the passed in tree.
+     */
+    minValueHelper(node){
+        let current = node;
+        while (current.left != null){
+            current = current.left;
+        }
+        return current;
+    }
+
+    /**
+     * @param {Node} node the root of the tree from the method's perspective. 
+     * @returns the largest node in the passed in tree.
+     */    
+    maxValueHelper(node){
+        let current = node;
+        while (current.right != null){
+            current = current.right;
+        }
+        return current;
+    }
 
     /**
      * searches for a value in the tree. 
@@ -96,16 +176,16 @@ export default class BinaryTree{
         return findHelper(root.right, value);
     }
 
-
-
-
-    /**
-     * @return {String} an inorder string representation of the tree
-     */
-     toString(){
-        return "";
+    inOrderTraversal(){
+        inOrderTraversalHelper(this.#node);
     }
 
+    inOrderTraversalHelper(node){
+        if (node == null) return;
+        inOrderTraversalHelper(node.left);
+        console.log("Value: " + node.value + " ");
+        inOrderTraversalHelper(node.right);
+    }
     get size(){
         return this.#size;
     }
