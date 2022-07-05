@@ -146,17 +146,6 @@ export default class BinaryTree{
         }
         return current;
     }
-
-    /**
-     * searches for a value in the tree. 
-     * @param {*} _value value to be found in the tree.
-     * @return {Node} returns the node containing that value if found
-     *                else, returns its parent if it would exist.
-     */
-    find(_value){
-        return findHelper(this.#root, _value);
-    }
-
     /**
      * 
      * @param {Node} root the root node from the perspective of the method
@@ -181,8 +170,19 @@ export default class BinaryTree{
         return findHelper(root.right, value);
     }
 
+    /**
+     * searches for a value in the tree. 
+     * @param {*} _value value to be found in the tree.
+     * @return {Node} returns the node containing that value if found
+     *                else, returns its parent if it would exist.
+     */
+     find(_value){
+        return findHelper(this.#root, _value);
+    }
+
+
     inOrderTraversal(){
-        inOrderTraversalHelper(this.#node);
+        inOrderTraversalHelper(this.#root);
     }
 
     inOrderTraversalHelper(node){

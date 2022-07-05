@@ -1,12 +1,25 @@
 {
-    "name": "binary-search-tree",
-    "version": "1.0.0",
-    "description": "An implementation of a BST",
-    "main": "BST.js",
-    "type": "module",
-    "scripts": {
-      "test": "echo \"Error: no test specified\" && exit 1"
-    },
-    "author": "Ahmed Aly",
-    "license": "ISC"
-  }
+  "name": "binary-search-tree",
+  "version": "1.0.0",
+  "description": "implementation of a bst",
+  "main": "BST.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ahmed-k-aly/Binary-Search-Tree.git"
+  },
+  "keywords": [
+    "BST",
+    "Binary-Search-Tree",
+    "JS"
+  ],
+  "author": "Ahmed Aly",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ahmed-k-aly/Binary-Search-Tree/issues"
+  },
+  "homepage": "https://github.com/ahmed-k-aly/Binary-Search-Tree#readme"
+}
